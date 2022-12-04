@@ -5,7 +5,11 @@ import re
 
 async def setup(bot):
     await bot.add_cog(owner(bot))
+
 class owner(commands.Cog):
+
+    """Owner Events"""
+
     def __init__(self, bot):
         self.bot = bot
         self._last_result = None

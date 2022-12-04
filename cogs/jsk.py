@@ -6,8 +6,7 @@ from jishaku.exception_handling import ReplResponseReactor
 from jishaku.repl import AsyncCodeExecutor, get_var_dict_from_ctx
 from jishaku.functools import AsyncSender
 
-# look into making more jishaku commands: https://jishaku.readthedocs.io/en/latest/cog.html
-async def setup(bot: commands.Bot):
+async def setup(bot):
     await bot.add_cog(Jishaku(bot=bot))
 
 class Jishaku(*OPTIONAL_FEATURES, *STANDARD_FEATURES):

@@ -4,11 +4,14 @@ from views.spotify_select import Spotify_Select_View
 import datetime
 from discord import app_commands
 
+async def setup(bot):
+    await bot.add_cog(Spotify(bot))
 
 class Spotify(commands.Cog):
     def __init__(self, bot):
 
         """Spotify Events"""
+        
         self.bot = bot
         self.playing_cache = {}
 
@@ -87,6 +90,3 @@ class Spotify(commands.Cog):
     async def set_channel(self, interaction):
         self.bot.ids.append(interaction.channel.id)
         await interaction.response.send_message(f'{interaction.channel.mention} has been set as channel.')
-
-async def setup(bot):
-    await bot.add_cog(Spotify(bot))
