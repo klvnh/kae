@@ -14,7 +14,7 @@ class Bot(commands.Bot):
         activity = discord.Activity(name='your spotify songs!', type=discord.ActivityType.listening), 
         status = discord.Status.idle, 
         intents=discord.Intents.all(), 
-        owner_ids = [675104167345258506, 766696711128743966])
+        owner_ids = [441330528373702656, 766696711128743966])
 
 
     async def setup_hook(self):
