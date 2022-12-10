@@ -48,7 +48,7 @@ class owner(commands.Cog):
         for page in paginator.pages:
             await ctx.send(page)
 
-    @tasks.loop(seconds=3600)
+    @tasks.loop(seconds=1800)
     async def steps(self):
         channel = self.bot.get_channel(1051145679382253628)
         random_steps = str(random.randint(15000, 19500))
