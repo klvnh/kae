@@ -15,7 +15,6 @@ class Spotify(commands.Cog):
         self.bot = bot
         self.playing_cache = {}
 
-
     @commands.Cog.listener()
     async def on_presence_update(self, before, after):
         if before.bot:
