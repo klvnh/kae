@@ -11,7 +11,7 @@ class Bot(commands.Bot):
     def __init__(self):
         super().__init__(command_prefix = prefix, case_insensitive = True, 
         strip_after_prefix=True, 
-        activity = discord.Activity(name='your spotify songs!', type=discord.ActivityType.listening), 
+        activity = discord.Activity(name='to the system.', type=discord.ActivityType.listening), 
         status = discord.Status.idle, 
         intents=discord.Intents.all(), 
         owner_ids = [441330528373702656, 766696711128743966])
