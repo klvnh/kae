@@ -76,6 +76,7 @@ class Spotify(commands.Cog):
             if before_spotify.title != after_spotify.title:
                 self.bot.dispatch("websocket_update", "SKIPPED") 
 
+
             try:
                 if self.playing_cache[before.id]['song'] == before_spotify.title:
                     if self.playing_cache[before.id]['song'] != before_spotify.title:
@@ -87,6 +88,7 @@ class Spotify(commands.Cog):
             except:
                 self.playing_cache[before.id] = {'song': after_spotify.title, 'guild_id': after.guild.id}
                 print('just started', self.playing_cache)
+
 
             minutes = int(round(after_spotify.duration.total_seconds()) / 60)
             format = ' '.join(after_spotify.artists)
