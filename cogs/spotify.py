@@ -64,7 +64,7 @@ class Spotify(commands.Cog):
             self.bot.dispatch("websocket_update", "STARTED")
 
         # when user changes songs.
-        if before_spotify is not None and after_spotify is not None:
+        if before_spotify.created_at != after_spotify.created_at:
             self.bot.dispatch("websocket_update", "SKIPPED")
 
         if before_spotify is None:
