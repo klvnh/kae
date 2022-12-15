@@ -69,11 +69,15 @@ class Spotify(commands.Cog):
                 self.bot.dispatch("websocket_update", "STARTED")
 
             # when user forwards the song.
-            if before_spotify.created_at != after_spotify.created_at:
+            if after_spotify is None:
+                return
+            elif before_spotify.created_at != after_spotify.created_at:
                 self.bot.dispatch("websocket_update", "FORWARD")
 
             # when user skips the songs.
-            if before_spotify.title != after_spotify.title:
+            if after_spotify is None:
+                return
+            elif before_spotify.title != after_spotify.title:
                 self.bot.dispatch("websocket_update", "SKIPPED") 
 
 
