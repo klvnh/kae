@@ -51,7 +51,7 @@ class Spotify(commands.Cog):
             after.activities)    
 
 
-        if before_spotify is None:
+        if after_spotify is None:
             return
         else:
 
