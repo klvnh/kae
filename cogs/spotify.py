@@ -39,9 +39,19 @@ class Spotify(commands.Cog):
         after_activity = discord.utils.find(
             lambda activity: isinstance(activity, discord.Activity),
             after.activities)    
+
+
+        before_custom_activity = discord.utils.find(
+            lambda activity: isinstance(activity, discord.CustomActivity),
+            before.activities)
+
+
+        after_custom_activity = discord.utils.find(
+            lambda activity: isinstance(activity, discord.CustomActivity),
+            after.activities)    
         
         # check any other changes and return.
-        if before.status != after.status or before_activity != after_activity:
+        if before.status != after.status or before_activity != after_activity or before_custom_activity != after_custom_activity:
             return
 
         # when user stops listening.
