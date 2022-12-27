@@ -17,20 +17,14 @@ class owner(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self._last_result = None
-        self.steps.start()
-
-    def cog_unload(self):
-        self.steps.cancel()
 
     async def cog_check(self, ctx):
         return await self.bot.is_owner(ctx.author)
 
     @commands.command(hidden=True)
     async def sync(self, ctx):
-        embed = discord.Embed()
         await self.bot.tree.sync()
-        embed.add_field(name="Success", value="Successfully synced all commands!")
-        await ctx.send(embed=embed)
+        return await ctx.send('True')
 
     @commands.command()
     async def reload(self, ctx):
@@ -47,33 +41,3 @@ class owner(commands.Cog):
 
         for page in paginator.pages:
             await ctx.send(page)
-
-    @tasks.loop(seconds=1800)
-    async def steps(self):
-        channel = self.bot.get_channel(1051145679382253628)
-        random_steps = str(random.randint(15000, 19500))
-        im = Image.open('./template/image.png')
-        draw = ImageDraw.Draw(im)
-        font1 = ImageFont.truetype(font='./template/font_pro.ttf', size=50)
-        font2 = ImageFont.truetype(font='./template/font_round.ttf', size=120)
-        font3 = ImageFont.truetype(font='./template/font_pro.ttf', size=40)
-        format = (random_steps[:2] + ',' + random_steps[2:])
-        month = datetime.datetime.now().strftime("%b")
-        day = datetime.datetime.now().strftime("%d")
-        year = datetime.datetime.now().strftime("%Y")
-        if day[0] == '0':
-                day = day[1]
-        draw.text((10, 2), 'TOTAL', font=font3, fill=(154,153,159,255))
-        draw.text((10, 41), format, font=font2)
-        draw.text((355, 108), 'steps', font=font1, fill=(154,153,159,255))
-        draw.text((10, 180), f'{month} {day}, {year}', font=font3, fill=(154,153,159,255))
-        buffer = BytesIO()
-        im.save(buffer, format="PNG")
-        buffer.seek(0)
-        await channel.send(file=discord.File(buffer, filename="some_image.png"))
-
-
-    @steps.before_loop
-    async def before_steps(self):
-        print('waiting...')
-        await self.bot.wait_until_ready()
