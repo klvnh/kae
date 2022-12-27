@@ -32,7 +32,7 @@ class owner(commands.Cog):
         for extension in list(self.bot.extensions.keys()):
             try:
                 await self.bot.reload_extension(extension)
-                paginator.add_line(f"> Succesfully reloaded: ``{extension}``")
+                paginator.add_line(f"``{extension}``: True")
             except Exception as e:
                 er = getattr(e, 'original', e)
                 paginator.add_line(f'\U0001f6ab Failed to load extension: ``{extension}``')
