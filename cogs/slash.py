@@ -13,6 +13,6 @@ class Slash(commands.Cog):
         self.bot = bot
         
 
-    @app_commands.command(name='Hello', brief='A default slash command.')
+    @app_commands.command(name='Hello', description='A default slash command.')
     async def hello_slash(self, interaction):
         await interaction.response.send_message('Hello')
